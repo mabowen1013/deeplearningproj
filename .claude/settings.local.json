@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import torch; print\\(torch.__version__\\); print\\(torch.cuda.is_available\\(\\)\\); print\\(torch.cuda.get_device_name\\(0\\) if torch.cuda.is_available\\(\\) else 'No GPU'\\)\")",
+      "Bash(python -c ':*)",
+      "Bash(python:*)",
+      "Bash(wmic process:*)",
+      "Bash(tasklist)",
+      "Bash(findstr /i python)",
+      "Bash(taskkill //F //PID 11640 //T)",
+      "Bash(taskkill //F //PID 15540 //T)",
+      "Bash(taskkill //F //PID 25192 //T)",
+      "Bash(taskkill //F //PID 9244 //T)",
+      "Bash(taskkill //F //PID 6960 //T)",
+      "Bash(python -u scripts/train.py --baseline --resume checkpoints/baseline/latest.pt --num-workers 0)",
+      "Bash(echo \"EXIT CODE: $?\")",
+      "Bash(tee /tmp/baseline_train.log)",
+      "Bash(echo \"Started training in background, PID: $!\")",
+      "Bash(taskkill //F //IM python.exe)"
+    ]
+  }
+}
